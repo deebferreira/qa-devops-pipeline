@@ -1,0 +1,31 @@
+package com.qapipeline.controller;
+
+import com.qapipeline.dto.TaskCreateRequest;
+import com.qapipeline.model.Task;
+import com.qapipeline.service.TaskService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/tasks")
+public class TaskController {
+
+    private final TaskService taskService;
+
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    @PostMapping
+    public ResponseEntity<Task> create(
+            @Valid @RequestBody TaskCreateRequest request) {
+
+        Task task = taskService.create(request);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(task);
+    }
+}
