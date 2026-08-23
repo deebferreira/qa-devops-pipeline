@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.qapipeline.dto.TaskUpdateRequest;
 
 import java.util.List;
 
@@ -43,6 +44,16 @@ public class TaskController {
     public ResponseEntity<Task> findById(@PathVariable Long id) {
 
         Task task = taskService.findById(id);
+
+        return ResponseEntity.ok(task);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> update(
+            @PathVariable Long id,
+            @Valid @RequestBody TaskUpdateRequest request) {
+
+        Task task = taskService.update(id, request);
 
         return ResponseEntity.ok(task);
     }
