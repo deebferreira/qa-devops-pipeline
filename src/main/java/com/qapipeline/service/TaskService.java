@@ -6,6 +6,7 @@ import com.qapipeline.model.TaskStatus;
 import com.qapipeline.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 import com.qapipeline.exception.TaskNotFoundException;
+import com.qapipeline.dto.TaskUpdateRequest;
 
 import java.util.List;
 
@@ -37,5 +38,16 @@ public class TaskService {
     public Task findById(Long id) {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
+    }
+
+    public Task update(Long id, TaskUpdateRequest request) {
+
+        Task task = findById(id);
+
+        task.setTitle(request.getTitle());
+        task.setDescription(request.getDescription());
+        task.setPriority(request.getPriority());
+
+        return taskRepository.save(task);
     }
 }
