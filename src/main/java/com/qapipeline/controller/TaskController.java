@@ -38,4 +38,12 @@ public class TaskController {
 
         return ResponseEntity.ok(tasks);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> findById(@PathVariable Long id) {
+
+        Task task = taskService.findById(id);
+
+        return ResponseEntity.ok(task);
+    }
 }
