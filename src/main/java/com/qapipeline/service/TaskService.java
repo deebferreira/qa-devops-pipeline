@@ -6,6 +6,8 @@ import com.qapipeline.model.TaskStatus;
 import com.qapipeline.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskService {
 
@@ -25,5 +27,9 @@ public class TaskService {
         task.setStatus(TaskStatus.TODO);
 
         return taskRepository.save(task);
+    }
+
+    public List<Task> findAll() {
+        return taskRepository.findAll();
     }
 }
