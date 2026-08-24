@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.qapipeline.dto.TaskUpdateRequest;
+import com.qapipeline.dto.TaskStatusUpdateRequest;
 
 import java.util.List;
 
@@ -54,6 +55,16 @@ public class TaskController {
             @Valid @RequestBody TaskUpdateRequest request) {
 
         Task task = taskService.update(id, request);
+
+        return ResponseEntity.ok(task);
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Task> updateStatus(
+            @PathVariable Long id,
+            @Valid @RequestBody TaskStatusUpdateRequest request) {
+
+        Task task = taskService.updateStatus(id, request);
 
         return ResponseEntity.ok(task);
     }
