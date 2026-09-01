@@ -108,6 +108,6 @@ class TaskGetByIdApiTest {
                 .when()
                 .request("GET", "/tasks/" + nonexistentId);
 
-        assertEquals(200, response.statusCode());
+        assertEquals(404, response.statusCode());
     }
 }
