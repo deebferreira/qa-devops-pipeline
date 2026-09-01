@@ -56,3 +56,6 @@ jobs:
 
       - name: Run tests
         run: ./mvnw clean test
+
+      - name: Build Docker image
+        run: docker build -t qa-pipeline-lab .
