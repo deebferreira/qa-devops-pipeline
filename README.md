@@ -260,3 +260,7 @@ Ao final do projeto foram alcançados:
 **Débora Ferreira**
 
 Projeto desenvolvido como atividade acadêmica do curso de **Análise e Desenvolvimento de Sistemas**.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License. Consulte o arquivo `LICENSE` para mais informações.
